@@ -1,8 +1,10 @@
+package operationsCRUD.maps;
+
 import io.restassured.RestAssured;
 
 import static io.restassured.RestAssured.given;
 
-public class UpdatePlace {
+public class DeletePlace {
 
     static void main(String[] args) {
 
@@ -10,11 +12,9 @@ public class UpdatePlace {
 
         given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
                 .body("{\n" +
-                        "    \"place_id\": \"09110a20bd14f6840511ce040ae984f1\",\n" +
-                        "    \"address\": \"70 Summer walk, Blr\",\n" +
-                        "    \"key\": \"qaclick123\"\n" +
+                        "    \"place_id\":\"09110a20bd14f6840511ce040ae984f1\"\n" +
                         "}")
-                .when().put("maps/api/place/update/json")
+                .when().delete("maps/api/place/delete/json")
                 .then().log().all().assertThat().statusCode(200);
     }
 }
